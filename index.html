@@ -2,84 +2,91 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <title>Jeanine Domenech — Pré-candidata a Dep. Estadual</title>
 <meta property="og:title" content="Jeanine Domenech — Pré-candidata a Dep. Estadual">
 <meta property="og:description" content="Quem resolve não precisa gritar. AVANTE">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lucianovv.github.io/JDCMPN/">
 <meta property="og:image" content="https://lucianovv.github.io/JDCMPN/og-preview.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image" content="https://lucianovv.github.io/JDCMPN/og-preview.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:100%; height:100%; overflow:hidden; background:#1a0a2e; font-family:'Source Sans 3',sans-serif; color:#fff; -webkit-tap-highlight-color:transparent; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;background:#1a0a2e;font-family:'Source Sans 3',sans-serif;color:#fff;-webkit-tap-highlight-color:transparent;}
+.slider{display:flex;width:400%;height:100%;transition:transform 0.4s ease;}
+.slide{width:25%;height:100%;flex-shrink:0;overflow:hidden;position:relative;}
 
-.slider { display:flex; width:400%; height:100%; transition:transform 0.4s ease; }
-.slide { width:25%; height:100%; flex-shrink:0; overflow:hidden; position:relative; }
+/* PROGRESS BAR */
+.progress{position:fixed;top:0;left:0;height:3px;background:#D4A853;z-index:20;transition:width 0.3s;}
 
 /* DOTS */
-.dots { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
-.dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); transition:all 0.3s; }
-.dot.on { background:#D4A853; width:24px; border-radius:4px; }
+.dots{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);transition:all 0.3s;cursor:pointer;}
+.dot.on{background:#D4A853;width:24px;border-radius:4px;}
 
-/* SWIPE HINT */
-.hint { position:fixed; bottom:40px; left:50%; transform:translateX(-50%); font-size:13px; color:rgba(255,255,255,0.3); z-index:10; letter-spacing:2px; animation:pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:0.3;} 50%{opacity:0.6;} }
+/* SHARE BUTTON */
+.share-btn{position:fixed;top:16px;right:16px;z-index:20;background:rgba(255,255,255,0.08);border:1px solid rgba(212,168,83,0.25);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.share-btn svg{width:20px;height:20px;fill:#D4A853;}
 
-/* ========== SLIDE 1 — HERO ========== */
-.s1 { background:#1a0a2e; }
-.s1 .bg { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
-.s1 .ov-top { position:absolute; top:0; left:0; width:100%; height:280px; background:linear-gradient(180deg, rgba(26,10,46,0.95) 0%, rgba(26,10,46,0.75) 40%, rgba(26,10,46,0.30) 70%, transparent 100%); z-index:1; }
-.s1 .ov-bot { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(180deg, transparent 0%, transparent 35%, rgba(26,10,46,0.20) 44%, rgba(26,10,46,0.55) 52%, rgba(26,10,46,0.85) 60%, rgba(26,10,46,0.97) 68%, rgba(26,10,46,1.0) 74%); z-index:1; }
-.s1 .top { position:absolute; top:0; left:0; width:100%; z-index:3; text-align:center; padding:5vh 5vw 0; }
-.s1 .top-cargo { font-size:clamp(14px,3.5vw,48px); font-weight:600; letter-spacing:0.4em; text-transform:uppercase; color:rgba(255,255,255,0.92); margin-bottom:1vh; }
-.s1 .top-partido { font-size:clamp(12px,3vw,44px); font-weight:700; letter-spacing:0.7em; text-transform:uppercase; color:#FFD100; }
-.s1 .bot { position:absolute; bottom:0; left:0; width:100%; z-index:2; display:flex; flex-direction:column; align-items:center; padding:0 6vw 8vh; }
-.s1 .gold-line { width:60px; height:2px; background:linear-gradient(90deg,transparent,#D4A853,transparent); margin-bottom:2vh; }
-.s1 .name { font-family:'Playfair Display',serif; font-size:clamp(28px,7vw,72px); font-weight:700; color:#FFD100; letter-spacing:0.15em; text-transform:uppercase; text-shadow:0 4px 30px rgba(255,209,0,0.2); margin-bottom:2vh; text-align:center; }
-.s1 .mote { font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(16px,4vw,42px); color:rgba(255,255,255,0.90); margin-bottom:4vh; text-align:center; }
-.s1 .mote .q { color:#D4A853; font-size:1.3em; }
-.s1 .siga { font-size:clamp(10px,2.2vw,24px); font-weight:300; color:rgba(255,255,255,0.45); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.5vh; }
-.s1 .ig { display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(212,168,83,0.25); border-radius:50px; padding:1.2vh 3vw; }
-.s1 .ig svg { width:clamp(16px,3vw,34px); height:clamp(16px,3vw,34px); fill:#D4A853; }
-.s1 .ig span { font-size:clamp(14px,3vw,32px); font-weight:600; }
+/* IG BUTTON — styled, not link-looking */
+.ig-btn{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(212,168,83,0.25);border-radius:50px;padding:1.2vh 3vw;text-decoration:none!important;color:#fff!important;}
+.ig-btn svg{width:clamp(14px,2.5vw,28px);height:clamp(14px,2.5vw,28px);fill:#D4A853;}
+.ig-btn span{font-size:clamp(12px,2.5vw,28px);font-weight:600;color:#fff!important;}
 
-/* ========== SLIDES 2-4 — CONTEUDO ========== */
-.cs { background:linear-gradient(180deg,#1a0a2e 0%,#221040 40%,#1a0a2e 100%); display:flex; flex-direction:column; padding:4vh 5vw 2vh; }
-.cs .tex { position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(ellipse at 25% 15%,rgba(74,26,107,0.18) 0%,transparent 55%),radial-gradient(ellipse at 75% 85%,rgba(74,26,107,0.12) 0%,transparent 55%); }
-.cs .inner { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-.cs .inner::-webkit-scrollbar { display:none; }
-.hsep { width:100%; height:1px; background:linear-gradient(90deg,transparent 2%,rgba(212,168,83,0.28) 15%,rgba(212,168,83,0.28) 85%,transparent 98%); margin:1.5vh 0; }
-.sec { margin-bottom:2vh; }
-.sec-t { font-size:clamp(10px,2vw,22px); font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#D4A853; text-align:center; padding-bottom:0.8vh; margin-bottom:1.2vh; border-bottom:1px solid rgba(212,168,83,0.40); }
-.it { display:flex; justify-content:space-between; align-items:baseline; gap:3vw; padding:0.8vh 0; border-bottom:1px solid rgba(255,255,255,0.03); }
-.it-l { font-size:clamp(13px,2.8vw,34px); font-weight:600; color:rgba(255,255,255,0.93); line-height:1.20; max-width:55%; }
-.it-r { text-align:right; flex:1; }
-.it-r-line { font-size:clamp(10px,2.2vw,26px); font-weight:300; color:#D4A853; line-height:1.30; }
-.it-r-line .n { font-family:'Playfair Display',serif; font-weight:700; color:#FFD100; }
-.bsep { width:100%; height:1px; background:linear-gradient(90deg,transparent 2%,rgba(212,168,83,0.18) 15%,rgba(212,168,83,0.18) 85%,transparent 98%); margin:1.5vh 0; }
+/* HINT */
+.hint{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);font-size:13px;color:rgba(255,255,255,0.3);z-index:10;letter-spacing:2px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:0.6;}}
+
+/* === SLIDE 1 — HERO === */
+.s1{background:#1a0a2e;}
+.s1 .bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+.s1 .ov-top{position:absolute;top:0;left:0;width:100%;height:280px;background:linear-gradient(180deg,rgba(26,10,46,0.95) 0%,rgba(26,10,46,0.75) 40%,rgba(26,10,46,0.30) 70%,transparent 100%);z-index:1;}
+.s1 .ov-bot{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,transparent 0%,transparent 35%,rgba(26,10,46,0.20) 44%,rgba(26,10,46,0.55) 52%,rgba(26,10,46,0.85) 60%,rgba(26,10,46,0.97) 68%,rgba(26,10,46,1.0) 74%);z-index:1;}
+.s1 .top{position:absolute;top:0;left:0;width:100%;z-index:3;text-align:center;padding:5vh 5vw 0;}
+.s1 .top-cargo{font-size:clamp(14px,3.5vw,48px);font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.92);margin-bottom:1vh;}
+.s1 .top-partido{font-size:clamp(12px,3vw,44px);font-weight:700;letter-spacing:0.7em;text-transform:uppercase;color:#FFD100;}
+.s1 .bot{position:absolute;bottom:0;left:0;width:100%;z-index:2;display:flex;flex-direction:column;align-items:center;padding:0 6vw 8vh;}
+.s1 .gold-line{width:60px;height:2px;background:linear-gradient(90deg,transparent,#D4A853,transparent);margin-bottom:2vh;}
+.s1 .name{font-family:'Playfair Display',serif;font-size:clamp(28px,7vw,72px);font-weight:700;color:#FFD100;letter-spacing:0.15em;text-transform:uppercase;text-shadow:0 4px 30px rgba(255,209,0,0.2);margin-bottom:2vh;text-align:center;}
+.s1 .mote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,4vw,42px);color:rgba(255,255,255,0.90);margin-bottom:3vh;text-align:center;}
+.s1 .mote .q{color:#D4A853;font-size:1.3em;}
+
+/* === SLIDES 2-4 CONTENT === */
+.cs{background:linear-gradient(180deg,#1a0a2e 0%,#221040 40%,#1a0a2e 100%);display:flex;flex-direction:column;padding:3vh 5vw 2vh;}
+.cs .tex{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 25% 15%,rgba(74,26,107,0.18) 0%,transparent 55%),radial-gradient(ellipse at 75% 85%,rgba(74,26,107,0.12) 0%,transparent 55%);}
+.cs .inner{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.cs .inner::-webkit-scrollbar{display:none;}
+.hsep{width:100%;height:1px;background:linear-gradient(90deg,transparent 2%,rgba(212,168,83,0.28) 15%,rgba(212,168,83,0.28) 85%,transparent 98%);margin:1vh 0;}
+.sec{margin-bottom:1.2vh;}
+.sec-t{font-size:clamp(10px,2vw,22px);font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:#D4A853;text-align:center;padding-bottom:0.6vh;margin-bottom:0.8vh;border-bottom:1px solid rgba(212,168,83,0.40);}
+.it{display:flex;justify-content:space-between;align-items:baseline;gap:3vw;padding:0.6vh 0;border-bottom:1px solid rgba(255,255,255,0.03);}
+.it-l{font-size:clamp(13px,2.8vw,34px);font-weight:600;color:rgba(255,255,255,0.93);line-height:1.20;max-width:55%;}
+.it-r{text-align:right;flex:1;}
+.it-r-line{font-size:clamp(10px,2.2vw,26px);font-weight:300;color:#D4A853;line-height:1.30;}
+.it-r-line .n{font-family:'Playfair Display',serif;font-weight:700;color:#FFD100;}
+.bsep{width:100%;height:1px;background:linear-gradient(90deg,transparent 2%,rgba(212,168,83,0.18) 15%,rgba(212,168,83,0.18) 85%,transparent 98%);margin:1vh 0;}
+.cs .cbot{text-align:center;margin-top:auto;padding-top:1vh;position:relative;z-index:1;}
 
 /* SLIDE 4 BANDEIRAS */
-.band { background:rgba(255,255,255,0.03); border:1px solid rgba(212,168,83,0.15); border-left:3px solid #D4A853; border-radius:0 8px 8px 0; padding:2vh 3vw; margin-bottom:1.5vh; display:flex; align-items:flex-start; gap:3vw; }
-.band-n { font-family:'Playfair Display',serif; font-size:clamp(20px,5vw,42px); font-weight:700; color:#FFD100; min-width:8vw; text-align:center; }
-.band-t { font-size:clamp(14px,3vw,32px); font-weight:700; color:rgba(255,255,255,0.95); text-transform:uppercase; letter-spacing:0.05em; line-height:1.15; margin-bottom:0.5vh; }
-.band-d { font-size:clamp(11px,2.2vw,24px); font-weight:300; color:#D4A853; line-height:1.3; }
-
-/* BOTTOM */
-.cs .cbot { text-align:center; margin-top:auto; padding-top:1.5vh; position:relative; z-index:1; }
-.ig-s { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.04); border:1px solid rgba(212,168,83,0.16); border-radius:50px; padding:1vh 4vw; }
-.ig-s svg { width:clamp(14px,2.5vw,24px); height:clamp(14px,2.5vw,24px); fill:#D4A853; }
-.ig-s span { font-size:clamp(12px,2.5vw,24px); font-weight:600; }
-.s4-head { font-family:'Playfair Display',serif; font-size:clamp(22px,5vw,52px); font-weight:700; color:#FFD100; letter-spacing:0.15em; text-transform:uppercase; text-align:center; margin-bottom:0.5vh; }
-.s4-sub { font-size:clamp(12px,2.5vw,26px); font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-align:center; margin-bottom:2vh; }
+.band{background:rgba(255,255,255,0.03);border:1px solid rgba(212,168,83,0.15);border-left:3px solid #D4A853;border-radius:0 8px 8px 0;padding:2vh 3vw;margin-bottom:1.2vh;display:flex;align-items:flex-start;gap:3vw;}
+.band-n{font-family:'Playfair Display',serif;font-size:clamp(20px,5vw,42px);font-weight:700;color:#FFD100;min-width:8vw;text-align:center;}
+.band-t{font-size:clamp(14px,3vw,32px);font-weight:700;color:rgba(255,255,255,0.95);text-transform:uppercase;letter-spacing:0.05em;line-height:1.15;margin-bottom:0.5vh;}
+.band-d{font-size:clamp(11px,2.2vw,24px);font-weight:300;color:#D4A853;line-height:1.3;}
+.s4-head{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,52px);font-weight:700;color:#FFD100;letter-spacing:0.15em;text-transform:uppercase;text-align:center;margin-bottom:0.5vh;}
+.s4-sub{font-size:clamp(12px,2.5vw,26px);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:2vh;}
+.s4-mote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(14px,3vw,30px);color:rgba(255,255,255,0.55);margin-bottom:1.5vh;text-align:center;}
+.s4-mote .q{color:#D4A853;}
 </style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
+
+<div class="share-btn" onclick="shareLink()" title="Compartilhar">
+  <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+</div>
 
 <div class="slider" id="slider">
 
@@ -96,82 +103,36 @@ html, body { width:100%; height:100%; overflow:hidden; background:#1a0a2e; font-
     <div class="gold-line"></div>
     <div class="name">Jeanine Domenech</div>
     <div class="mote"><span class="q">&ldquo;</span>Quem resolve não precisa gritar.<span class="q">&rdquo;</span></div>
-    <div class="siga">Siga no Instagram</div>
-    <div class="ig">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      <span>@jedomenech</span>
-    </div>
+    <a href="https://www.instagram.com/jedomenech/" target="_blank" class="ig-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></a>
   </div>
 </div>
 
-<!-- SLIDE 2 — GESTÃO & CARREIRA -->
+<!-- SLIDE 2 — GESTÃO + ESPORTE + CARREIRA -->
 <div class="slide cs">
   <div class="tex"></div>
   <div class="inner">
     <div class="hsep"></div>
-    <div class="sec">
-      <div class="sec-t">Gestão &amp; Segurança</div>
-      <div class="it"><div class="it-l">Gestora do Segurança Presente</div><div class="it-r"><div class="it-r-line"><span class="n">62+</span> bases · <span class="n">30</span> municípios · ~<span class="n">4 mil</span> agentes</div><div class="it-r-line"><span class="n">40+</span> bases inauguradas na sua gestão</div></div></div>
-      <div class="it"><div class="it-l">Gestora da Operação Lei Seca</div><div class="it-r"><div class="it-r-line"><span class="n">17</span> anos · <span class="n">5 mi</span> motoristas fiscalizados</div></div></div>
-      <div class="it"><div class="it-l">Criadora do Mulher Presente</div><div class="it-r"><div class="it-r-line">Acolhimento e orientação jurídica</div></div></div>
-    </div>
+    <div class="sec"><div class="sec-t">Gestão &amp; Segurança</div><div class="it"><div class="it-l">Gestora do Segurança Presente</div><div class="it-r"><div class="it-r-line"><span class="n">62+</span> bases · <span class="n">30</span> municípios · ~<span class="n">4 mil</span> agentes</div><div class="it-r-line"><span class="n">40+</span> bases inauguradas na sua gestão</div></div></div><div class="it"><div class="it-l">Gestora da Operação Lei Seca</div><div class="it-r"><div class="it-r-line"><span class="n">17</span> anos · <span class="n">5 mi</span> motoristas fiscalizados</div></div></div><div class="it"><div class="it-l">Criadora do Mulher Presente</div><div class="it-r"><div class="it-r-line">Acolhimento e orientação jurídica</div></div></div></div>
     <div class="bsep"></div>
-    <div class="sec">
-      <div class="sec-t">Carreira &amp; Desenvolvimento</div>
-      <div class="it"><div class="it-l">Subsecretária de Projetos Especiais</div><div class="it-r"><div class="it-r-line">SEGOV-RJ · 2024–2026</div></div></div>
-      <div class="it"><div class="it-l">Subsecretária-Geral e Chefe de Gabinete</div><div class="it-r"><div class="it-r-line">SEPLAG · 2020–2022</div><div class="it-r-line"><span class="n">1.500+</span> servidores · <span class="n">6</span> subsecretarias</div></div></div>
-      <div class="it"><div class="it-l">Conselheira de Administração</div><div class="it-r"><div class="it-r-line">EMOP · 2021–2022</div></div></div>
-      <div class="it"><div class="it-l">Secretária Mun. de Planejamento</div><div class="it-r"><div class="it-r-line">Eng. Paulo de Frontin · 2023</div></div></div>
-      <div class="it"><div class="it-l">Chefe do Departamento Jurídico</div><div class="it-r"><div class="it-r-line">AgeRio · 2007–2014</div></div></div>
-      <div class="it"><div class="it-l">Assessora Jurídica</div><div class="it-r"><div class="it-r-line">CODIN · 2014–2019</div><div class="it-r-line">Ambev, Coca-Cola, CSN, Nissan, JLR</div></div></div>
-    </div>
+    <div class="sec"><div class="sec-t">Esporte</div><div class="it"><div class="it-l">Campeã sulamericana de natação</div><div class="it-r"><div class="it-r-line">Aos 11 anos</div></div></div><div class="it"><div class="it-l">Campeã brasileira de volleyball</div><div class="it-r"><div class="it-r-line">~[a confirmar]</div></div></div><div class="it"><div class="it-l">VP Tribunal de Justiça Desportivo</div><div class="it-r"><div class="it-r-line">Fed. Vôlei RJ · 2009–2012</div></div></div></div>
+    <div class="bsep"></div>
+    <div class="sec"><div class="sec-t">Carreira &amp; Desenvolvimento</div><div class="it"><div class="it-l">Subsecretária de Projetos Especiais</div><div class="it-r"><div class="it-r-line">SEGOV-RJ · 2024–2026</div></div></div><div class="it"><div class="it-l">Subsecretária-Geral e Chefe de Gabinete</div><div class="it-r"><div class="it-r-line">SEPLAG · 2020–2022</div><div class="it-r-line"><span class="n">1.500+</span> servidores · <span class="n">6</span> subsecretarias</div></div></div><div class="it"><div class="it-l">Conselheira de Administração</div><div class="it-r"><div class="it-r-line">EMOP · 2021–2022</div></div></div><div class="it"><div class="it-l">Secretária Mun. de Planejamento</div><div class="it-r"><div class="it-r-line">Eng. Paulo de Frontin · 2023</div></div></div><div class="it"><div class="it-l">Chefe do Departamento Jurídico</div><div class="it-r"><div class="it-r-line">AgeRio · 2007–2014</div></div></div><div class="it"><div class="it-l">Assessora Jurídica</div><div class="it-r"><div class="it-r-line">CODIN · 2014–2019</div><div class="it-r-line">Ambev, Coca-Cola, CSN, Nissan, JLR</div></div></div></div>
   </div>
-  <div class="cbot"><div class="ig-s"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></div></div>
+  <div class="cbot"><a href="https://www.instagram.com/jedomenech/" target="_blank" class="ig-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></a></div>
 </div>
 
-<!-- SLIDE 3 — ESPORTE, FORMAÇÃO, RECONHECIMENTO -->
+<!-- SLIDE 3 — SOCIEDADE + FORMAÇÃO + RECONHECIMENTO -->
 <div class="slide cs">
   <div class="tex"></div>
   <div class="inner">
     <div class="hsep"></div>
-    <div class="sec">
-      <div class="sec-t">Esporte</div>
-      <div class="it"><div class="it-l">Campeã sulamericana de natação</div><div class="it-r"><div class="it-r-line">Aos 11 anos</div></div></div>
-      <div class="it"><div class="it-l">Campeã brasileira de volleyball</div><div class="it-r"><div class="it-r-line">~[a confirmar]</div></div></div>
-      <div class="it"><div class="it-l">VP Tribunal de Justiça Desportivo</div><div class="it-r"><div class="it-r-line">Fed. Vôlei RJ · 2009–2012</div></div></div>
-    </div>
+    <div class="sec"><div class="sec-t">Sociedade &amp; Valores</div><div class="it"><div class="it-l">Inst. Mulheres de Direita na Política</div><div class="it-r"><div class="it-r-line">Vice-Presidente</div></div></div><div class="it"><div class="it-l">Professora de Direito</div><div class="it-r"><div class="it-r-line">IBMEC · ABIC</div></div></div><div class="it"><div class="it-l">Advogada</div><div class="it-r"><div class="it-r-line">OAB/RJ 129.250</div></div></div></div>
     <div class="bsep"></div>
-    <div class="sec">
-      <div class="sec-t">Sociedade &amp; Valores</div>
-      <div class="it"><div class="it-l">Inst. Mulheres de Direita na Política</div><div class="it-r"><div class="it-r-line">Vice-Presidente</div></div></div>
-      <div class="it"><div class="it-l">Professora de Direito</div><div class="it-r"><div class="it-r-line">IBMEC · ABIC</div></div></div>
-      <div class="it"><div class="it-l">Advogada</div><div class="it-r"><div class="it-r-line">OAB/RJ 129.250</div></div></div>
-    </div>
+    <div class="sec"><div class="sec-t">Formação Acadêmica</div><div class="it"><div class="it-l">Mestra em Adm. Pública</div><div class="it-r"><div class="it-r-line">FGV/EBAPE · 2021–2023</div></div></div><div class="it"><div class="it-l">Direito Corporativo</div><div class="it-r"><div class="it-r-line">IBMEC · 2012–2014</div></div></div><div class="it"><div class="it-l">Direito Eleitoral</div><div class="it-r"><div class="it-r-line">UERJ · 2010–2013</div></div></div><div class="it"><div class="it-l">Direito Desportivo</div><div class="it-r"><div class="it-r-line">UCAM · 2007–2009</div></div></div><div class="it"><div class="it-l">Inteligência de Estado</div><div class="it-r"><div class="it-r-line">GSI-RJ · 60h</div></div></div></div>
     <div class="bsep"></div>
-    <div class="sec">
-      <div class="sec-t">Formação Acadêmica</div>
-      <div class="it"><div class="it-l">Mestra em Adm. Pública</div><div class="it-r"><div class="it-r-line">FGV/EBAPE · 2021–2023</div></div></div>
-      <div class="it"><div class="it-l">Direito Corporativo</div><div class="it-r"><div class="it-r-line">IBMEC · 2012–2014</div></div></div>
-      <div class="it"><div class="it-l">Direito Eleitoral</div><div class="it-r"><div class="it-r-line">UERJ · 2010–2013</div></div></div>
-      <div class="it"><div class="it-l">Direito Desportivo</div><div class="it-r"><div class="it-r-line">UCAM · 2007–2009</div></div></div>
-      <div class="it"><div class="it-l">Inteligência de Estado</div><div class="it-r"><div class="it-r-line">GSI-RJ · 60h</div></div></div>
-    </div>
-    <div class="bsep"></div>
-    <div class="sec">
-      <div class="sec-t">Reconhecimento</div>
-      <div class="it"><div class="it-l">Cidadã Niteroiense</div><div class="it-r"><div class="it-r-line">Decreto Legislativo</div></div></div>
-      <div class="it"><div class="it-l">Medalha Mérito Jurídico</div><div class="it-r"><div class="it-r-line">AIEB · ago/2025</div></div></div>
-      <div class="it"><div class="it-l">Grau Oficial Pedro Ernesto</div><div class="it-r"><div class="it-r-line">AIEB · out/2025</div></div></div>
-      <div class="it"><div class="it-l">Dama Comendadora</div><div class="it-r"><div class="it-r-line">ABRASCI</div></div></div>
-      <div class="it"><div class="it-l">Medalha Mérito Lei Seca</div><div class="it-r"><div class="it-r-line">DOERJ</div></div></div>
-      <div class="it"><div class="it-l">Medalha Op. Lei Seca — 15 anos</div><div class="it-r"><div class="it-r-line">2024</div></div></div>
-      <div class="it"><div class="it-l">Medalha Seg. Presente — 10 anos</div><div class="it-r"><div class="it-r-line">10 anos de operação</div></div></div>
-      <div class="it"><div class="it-l">Homenagem OAB Barra da Tijuca</div><div class="it-r"><div class="it-r-line">2026</div></div></div>
-      <div class="it"><div class="it-l">Moção de Louvor — Niterói</div><div class="it-r"><div class="it-r-line">set/2025</div></div></div>
-      <div class="it"><div class="it-l">Moção de Aplausos — Itaperuna</div><div class="it-r"><div class="it-r-line">mar/2025</div></div></div>
-    </div>
+    <div class="sec"><div class="sec-t">Reconhecimento</div><div class="it"><div class="it-l">Cidadã Niteroiense</div><div class="it-r"><div class="it-r-line">Decreto Legislativo</div></div></div><div class="it"><div class="it-l">Medalha Mérito Jurídico</div><div class="it-r"><div class="it-r-line">AIEB · ago/2025</div></div></div><div class="it"><div class="it-l">Grau Oficial Pedro Ernesto</div><div class="it-r"><div class="it-r-line">AIEB · out/2025</div></div></div><div class="it"><div class="it-l">Dama Comendadora</div><div class="it-r"><div class="it-r-line">ABRASCI</div></div></div><div class="it"><div class="it-l">Medalha Mérito Lei Seca</div><div class="it-r"><div class="it-r-line">DOERJ</div></div></div><div class="it"><div class="it-l">Medalha Op. Lei Seca — 15 anos</div><div class="it-r"><div class="it-r-line">2024</div></div></div><div class="it"><div class="it-l">Medalha Seg. Presente — 10 anos</div><div class="it-r"><div class="it-r-line">10 anos de operação</div></div></div><div class="it"><div class="it-l">Homenagem OAB Barra da Tijuca</div><div class="it-r"><div class="it-r-line">2026</div></div></div><div class="it"><div class="it-l">Moção de Louvor — Niterói</div><div class="it-r"><div class="it-r-line">set/2025</div></div></div><div class="it"><div class="it-l">Moção de Aplausos — Itaperuna</div><div class="it-r"><div class="it-r-line">mar/2025</div></div></div></div>
   </div>
-  <div class="cbot"><div class="ig-s"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></div></div>
+  <div class="cbot"><a href="https://www.instagram.com/jedomenech/" target="_blank" class="ig-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></a></div>
 </div>
 
 <!-- SLIDE 4 — BANDEIRAS -->
@@ -188,10 +149,8 @@ html, body { width:100%; height:100%; overflow:hidden; background:#1a0a2e; font-
     <div class="band"><div class="band-n">5</div><div><div class="band-t">Esporte &amp; Sociedade</div><div class="band-d">Programas esportivos em áreas vulneráveis</div></div></div>
   </div>
   <div class="cbot">
-    <div style="font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(14px,3vw,30px); color:rgba(255,255,255,0.55); margin-bottom:1.5vh;"><span style="color:#D4A853;">&ldquo;</span>Quem resolve não precisa gritar.<span style="color:#D4A853;">&rdquo;</span></div>
-    <a href="https://www.instagram.com/jedomenech/" target="_blank" style="text-decoration:none;">
-      <div class="ig-s"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></div>
-    </a>
+    <div class="s4-mote"><span class="q">&ldquo;</span>Quem resolve não precisa gritar.<span class="q">&rdquo;</span></div>
+    <a href="https://www.instagram.com/jedomenech/" target="_blank" class="ig-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>@jedomenech</span></a>
   </div>
 </div>
 
@@ -200,44 +159,50 @@ html, body { width:100%; height:100%; overflow:hidden; background:#1a0a2e; font-
 <div class="dots" id="dots">
   <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
 </div>
-<div class="hint">DESLIZE ◀ ▶</div>
+<div class="hint" id="hint">DESLIZE ◀ ▶</div>
 
 <script>
-const slider = document.getElementById('slider');
-const dots = document.querySelectorAll('.dot');
-let current = 0;
-let startX = 0, diffX = 0, dragging = false;
+const slider=document.getElementById('slider'),dots=document.querySelectorAll('.dot'),progress=document.getElementById('progress'),hint=document.getElementById('hint');
+let current=0,startX=0,diffX=0,dragging=false,autoTimer=null;
+const TOTAL=4,AUTO_MS=6000;
 
-function goTo(i) {
-  current = Math.max(0, Math.min(3, i));
-  slider.style.transform = `translateX(-${current * 25}%)`;
-  dots.forEach((d, idx) => { d.className = idx === current ? 'dot on' : 'dot'; });
-  document.querySelector('.hint').style.display = current > 0 ? 'none' : 'block';
+function goTo(i){
+  current=Math.max(0,Math.min(TOTAL-1,i));
+  slider.style.transform=`translateX(-${current*25}%)`;
+  dots.forEach((d,idx)=>d.className=idx===current?'dot on':'dot');
+  progress.style.width=((current+1)/TOTAL*100)+'%';
+  hint.style.display=current>0?'none':'block';
+  resetAuto();
 }
 
-slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; });
-slider.addEventListener('touchmove', e => { if (dragging) diffX = e.touches[0].clientX - startX; });
-slider.addEventListener('touchend', () => {
-  if (Math.abs(diffX) > 40) goTo(current + (diffX < 0 ? 1 : -1));
-  diffX = 0; dragging = false;
-});
+function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(()=>goTo((current+1)%TOTAL),AUTO_MS);}
 
-// Mouse support
-slider.addEventListener('mousedown', e => { startX = e.clientX; dragging = true; e.preventDefault(); });
-slider.addEventListener('mousemove', e => { if (dragging) diffX = e.clientX - startX; });
-slider.addEventListener('mouseup', () => {
-  if (Math.abs(diffX) > 40) goTo(current + (diffX < 0 ? 1 : -1));
-  diffX = 0; dragging = false;
-});
+// Touch
+slider.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true;});
+slider.addEventListener('touchmove',e=>{if(dragging)diffX=e.touches[0].clientX-startX;});
+slider.addEventListener('touchend',()=>{if(Math.abs(diffX)>40)goTo(current+(diffX<0?1:-1));diffX=0;dragging=false;});
+
+// Mouse
+slider.addEventListener('mousedown',e=>{startX=e.clientX;dragging=true;e.preventDefault();});
+slider.addEventListener('mousemove',e=>{if(dragging)diffX=e.clientX-startX;});
+slider.addEventListener('mouseup',()=>{if(Math.abs(diffX)>40)goTo(current+(diffX<0?1:-1));diffX=0;dragging=false;});
 
 // Keyboard
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') goTo(current + 1);
-  if (e.key === 'ArrowLeft') goTo(current - 1);
-});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(current+1);if(e.key==='ArrowLeft')goTo(current-1);});
 
-// Click on dots
-dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+// Dots click
+dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+
+// Share
+function shareLink(){
+  const data={title:'Jeanine Domenech',text:'Conheça Jeanine Domenech — Pré-candidata a Dep. Estadual pelo AVANTE',url:'https://lucianovv.github.io/JDCMPN/'};
+  if(navigator.share)navigator.share(data).catch(()=>{});
+  else{navigator.clipboard.writeText(data.url);alert('Link copiado!');}
+}
+
+// Init auto-advance
+progress.style.width='25%';
+resetAuto();
 </script>
 
 </body>
